@@ -13,7 +13,7 @@ The design goal is to keep the application layer completely independent from con
 
 ---
 
-# Key Idea
+## Key Idea
 
 Application code includes **only one header file**:
 
@@ -34,7 +34,7 @@ The application communicates only with the **`Character` interface**, while the 
 
 ---
 
-# Architecture Overview
+## Architecture Overview
 
 ```
                 +------------------+
@@ -61,7 +61,7 @@ The application communicates only with the **`Character` interface**, while the 
 
 ---
 
-# Project Structure
+## Project Structure
 
 ```
 .
@@ -78,7 +78,7 @@ The application communicates only with the **`Character` interface**, while the 
 └── main.cpp
 ```
 
-### Components
+#### Components
 
 **`api.hpp`**
 
@@ -106,7 +106,7 @@ CMake selects which implementation is compiled based on a configuration variable
 
 ---
 
-# Building the Project
+## Building the Project
 
 Create a build directory and configure the project using CMake.
 
@@ -125,7 +125,7 @@ Run the program:
 
 ---
 
-# Selecting the Character Implementation
+## Selecting the Character Implementation
 
 The character implementation is selected using the `CHARACTER` CMake variable.
 
@@ -147,7 +147,7 @@ Only the selected implementation will be compiled into the final executable.
 
 ---
 
-# Adding a New Character
+## Adding a New Character
 
 One of the main benefits of this architecture is extensibility.
 
@@ -155,7 +155,7 @@ Adding a new character requires only 3 steps.
 
 ---
 
-## 1. Add a Header File
+### 1. Add a Header File
 
 Create a new header in the `include` directory.
 
@@ -177,7 +177,7 @@ public:
 
 ---
 
-## 2. Add a Source File
+### 2. Add a Source File
 
 Create the implementation file.
 
@@ -208,9 +208,9 @@ void Paladin::SpecialAttack()
 
 ---
 
-## 3. Update CMakeLists.txt
+### 3. Update CMakeLists.txt
 
-Add the new character to the supported character.
+Add the new character to the supported characters.
 
 ```
 elseif(${CHARACTER} STREQUAL "NewCharacter")
@@ -221,7 +221,7 @@ No other code needs to change. Importantly, `main.cpp` remains untouched.
 
 ---
 
-# Summary
+## Summary
 
 Key characteristics of this project:
 
@@ -237,7 +237,7 @@ This keeps the system modular, extensible, and aligned with modern C++ OOP pract
 
 ---
 
-# Requirements
+## Requirements
 
 - C++17 compatible compiler
-- CMake 3.15 or later
+- CMake 3.14 or later
